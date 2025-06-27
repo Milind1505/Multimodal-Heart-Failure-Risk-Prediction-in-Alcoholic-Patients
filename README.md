@@ -4,7 +4,7 @@ Overview
 
 This project presents a production-ready multimodal deep learning pipeline designed to predict heart failure risk in alcoholic patients by integrating structured tabular health metadata with ECG plot image data. It encapsulates real-world healthcare AI challenges such as data fusion, model robustness, and interpretability, while showcasing end-to-end model deployment using Gradio for instant clinical simulation.
 
-As a Senior Data Scientist, my goal was to demonstrate the power of cross-modal representation learning for sensitive clinical risk prediction, tackling both tabular and image modalities in a unified inference workflow.
+My goal was to demonstrate the power of cross-modal representation learning for sensitive clinical risk prediction, tackling both tabular and image modalities in a unified inference workflow.
 
 Problem Statement
 
@@ -21,34 +21,35 @@ This solution is built around a hybrid neural architecture with two synchronized
 Tabular Metadata Branch
 
 Input: Normalized patient data (e.g., age, weekly alcohol units, comorbidities)
-
 Layers: Dense → ReLU → Dropout
 
 ECG Image Branch
 
 Input: Resized ECG plot (.png)
-
 Layers: Pre-trained MobileNetV2 (frozen) → Global Avg Pooling → Dense → Dropout
 
 Fusion Head
 
 Concatenated features from both branches
-
 Post-Fusion: Dense layers for joint reasoning
-
 Output: Sigmoid-activated neuron for binary classification (Low Risk / High Risk)
 
 Files & Structure
 
-multimodal_heart_failure_risk_prediction_in_alcoholic_patients.py: Self-contained app with model definition, loading utilities, preprocessing pipeline, and Gradio UI.
+multimodal_heart_failure_risk_prediction_in_alcoholic_patients.py: 
+Self-contained app with model definition, loading utilities, preprocessing pipeline, and Gradio UI.
 
-hybrid_model_weights.h5: Trained weights (not in repo).
+hybrid_model_weights.h5: 
+Trained weights (not in repo).
 
-scaler.pkl, label_encoder.pkl: Fitted preprocessing objects.
+scaler.pkl, label_encoder.pkl: 
+Fitted preprocessing objects.
 
-patient_cardiovascular_risk_data.csv: Metadata input (user uploads this).
+patient_cardiovascular_risk_data.csv: 
+Metadata input (user uploads this).
 
-ecg_plots_for_patient_cardiovascular_risk/: Folder with ECG images for each patient.
+ecg_plots_for_patient_cardiovascular_risk/: 
+Folder with ECG images for each patient.
 
 Inference Workflow (Gradio UI)
 
@@ -57,9 +58,7 @@ Upload ECG Plot (PNG format).
 Input Patient Metadata (Age, Gender, Alcohol Consumption, Duration, Diabetes, Hypertension).
 
 Click 'Predict' to get:
-
 Risk Category: Low or High
-
 Probability Score: e.g., "74.2% Risk"
 
 This allows on-the-fly inference and mimics a real-world diagnostic assistant.
@@ -79,9 +78,7 @@ Deploy on Hugging Face
 Ensure the following are included in your repo:
 
 multimodal_heart_failure_risk_prediction_in_alcoholic_patients.py
-
 requirements.txt
-
 Model weights + scaler + encoder files
 
 Hugging Face will auto-run the Gradio app once deployed.
@@ -89,13 +86,9 @@ Hugging Face will auto-run the Gradio app once deployed.
 Model Training & Validation
 
 Optimizer: Adam
-
 Loss: Binary Crossentropy
-
 Metrics: Accuracy, AUC-ROC
-
 Callbacks: EarlyStopping, ReduceLROnPlateau
-
 Typical AUC on validation set: ~0.85+
 
 Training is omitted from this deployment version but available in Jupyter format (.ipynb upon request).
