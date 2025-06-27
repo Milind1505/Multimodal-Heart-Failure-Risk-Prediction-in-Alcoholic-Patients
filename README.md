@@ -19,32 +19,49 @@ Model Architecture
 This solution is built around a hybrid neural architecture with two synchronized branches:
 
 Tabular Metadata Branch
+
 Input: Normalized patient data (e.g., age, weekly alcohol units, comorbidities)
+
 Layers: Dense → ReLU → Dropout
+
 ECG Image Branch
+
 Input: Resized ECG plot (.png)
+
 Layers: Pre-trained MobileNetV2 (frozen) → Global Avg Pooling → Dense → Dropout
+
 Fusion Head
+
 Concatenated features from both branches
+
 Post-Fusion: Dense layers for joint reasoning
+
 Output: Sigmoid-activated neuron for binary classification (Low Risk / High Risk)
 
 Files & Structure
 
-multimodal_heart_failure_risk_prediction_in_alcoholic_patients.py:
-Self-contained app with model definition, loading utilities, preprocessing pipeline, and Gradio UI.
+multimodal_heart_failure_risk_prediction_in_alcoholic_patients.py: Self-contained app with model definition, loading utilities, preprocessing pipeline, and Gradio UI.
+
 hybrid_model_weights.h5: Trained weights (not in repo).
+
 scaler.pkl, label_encoder.pkl: Fitted preprocessing objects.
+
 patient_cardiovascular_risk_data.csv: Metadata input (user uploads this).
+
 ecg_plots_for_patient_cardiovascular_risk/: Folder with ECG images for each patient.
 
 Inference Workflow (Gradio UI)
 
 Upload ECG Plot (PNG format).
+
 Input Patient Metadata (Age, Gender, Alcohol Consumption, Duration, Diabetes, Hypertension).
+
 Click 'Predict' to get:
+
 Risk Category: Low or High
+
 Probability Score: e.g., "74.2% Risk"
+
 This allows on-the-fly inference and mimics a real-world diagnostic assistant.
 
 Deployment
@@ -54,6 +71,7 @@ This project is designed for one-click deployment on Hugging Face Spaces using G
 How to Run Locally
 
 pip install -r requirements.txt
+
 python multimodal_heart_failure_risk_prediction_in_alcoholic_patients.py
 
 Deploy on Hugging Face
