@@ -57,20 +57,29 @@ pip install -r requirements.txt
 python multimodal_heart_failure_risk_prediction_in_alcoholic_patients.py
 
 Deploy on Hugging Face
+
 Ensure the following are included in your repo:
 
 multimodal_heart_failure_risk_prediction_in_alcoholic_patients.py
+
 requirements.txt
+
 Model weights + scaler + encoder files
+
 Hugging Face will auto-run the Gradio app once deployed.
 
 Model Training & Validation
 
 Optimizer: Adam
+
 Loss: Binary Crossentropy
+
 Metrics: Accuracy, AUC-ROC
+
 Callbacks: EarlyStopping, ReduceLROnPlateau
+
 Typical AUC on validation set: ~0.85+
+
 Training is omitted from this deployment version but available in Jupyter format (.ipynb upon request).
 
 Ethical Considerations
